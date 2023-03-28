@@ -1,6 +1,9 @@
 package com.spring.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -51,18 +54,10 @@ public class Lecture {
 
 
     // 분반 > 강의 다대일
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lecture")
-    @JsonIgnoreProperties({"lecture"})
-    private List<LectureClass> lectureClassSessions = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lecture" , fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<LectureClass> lectureClasss = new ArrayList<>();
 
-    public LectureClass addLectureClass() {
-        LectureClass lectureClass = LectureClass.builder()
-                .lecture(this)
-                .build();
-        lectureClassSessions.add(lectureClass);
-
-        return lectureClass;
-    }
 
 
 

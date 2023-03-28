@@ -9,7 +9,6 @@ public class LectureClassEditor {
     private final Long classMax;
     private final Lecture lecture;
     private final Professor professor;
-
     private final Long period;
     private final Long week;
     private final String explanation;

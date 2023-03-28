@@ -1,5 +1,9 @@
 package com.spring.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -45,7 +49,8 @@ public class User {
         this.createdDate = LocalDateTime.now();
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user" , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<SessionUser> sessions = new ArrayList<>();
 
     public SessionUser addSession() {
@@ -57,6 +62,10 @@ public class User {
         return session;
     }
 
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user" , fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<TakeLecture> TakeLectures  = new ArrayList<>();
 
     public UserEditor.UserEditorBuilder toEditor() {
         return UserEditor.builder()

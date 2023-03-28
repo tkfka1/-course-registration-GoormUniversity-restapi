@@ -14,7 +14,7 @@ public class LectureResponse {
 
     private final Long id;
     private final String name;
-    private Major major;
+    private final Major major;
     private final Long credit;
 
     // 생성자 오버로딩

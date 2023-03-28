@@ -1,5 +1,8 @@
 package com.spring.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,7 +36,8 @@ public class Admin {
         this.password = password;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "admin")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "admin" , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<SessionAdmin> sessions = new ArrayList<>();
 
     public SessionAdmin addSession() {

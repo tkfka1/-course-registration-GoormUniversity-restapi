@@ -1,11 +1,16 @@
 package com.spring.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -28,11 +33,11 @@ public class LectureClass {
     @Column(name = "lecture_class_explanation")
     private String explanation;
 
-
     // 분반 > 강의 다대일
     @ManyToOne(fetch = FetchType.EAGER)
     private Lecture lecture;
 
+    // 분반 > 교수 다대일
     @ManyToOne(fetch = FetchType.EAGER)
     private Professor professor;
 
@@ -71,5 +76,13 @@ public class LectureClass {
         this.professor = lectureClassEditor.getProfessor();
 
     }
+
+
+    // 수강신청 > 분반강의 다대일
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lectureClass" , fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<TakeLecture> takeLectures  = new ArrayList<>();
+
 
 }

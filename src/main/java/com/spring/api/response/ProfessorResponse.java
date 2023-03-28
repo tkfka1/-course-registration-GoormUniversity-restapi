@@ -13,7 +13,7 @@ public class ProfessorResponse {
 
     private final Long id;
     private final String name;
-    private Major major;
+    private final Major major;
 
     // 생성자 오버로딩
     public ProfessorResponse(Professor professor) {

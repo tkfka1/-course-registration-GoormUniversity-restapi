@@ -17,15 +17,15 @@ public class LectureClassResponse {
     private final Long id;
     private final Long classMax;
     private final Long classMin;
-    private Lecture lecture;
-    private Professor professor;
+    private final Lecture lecture;
+    private final Professor professor;
     private final String explanation;
     private final Long period;
     private final Long week;
 
     // 생성자 오버로딩
     public LectureClassResponse(LectureClass lectureClass) {
-        this.id = lecture.getId();
+        this.id = lectureClass.getId();
         this.classMax = lectureClass.getClassMax();
         this.classMin = lectureClass.getClassMin();
         this.lecture = lectureClass.getLecture();

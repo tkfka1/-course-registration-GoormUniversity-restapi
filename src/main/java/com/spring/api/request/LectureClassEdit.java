@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class LectureClassEdit {
 
-    @NotBlank(message = "최소인원수를 입력해주세요.")
+    @NotNull(message = "최소인원수를 입력해주세요.")
     private Long classMin;
     @NotNull(message = "최대인원수를 입력해주세요.")
     private Long classMax;

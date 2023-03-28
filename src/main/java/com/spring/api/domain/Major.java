@@ -1,6 +1,8 @@
 package com.spring.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,8 +43,8 @@ public class Major {
     }
 
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "major")
-    @JsonIgnoreProperties({"major"})
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "major" , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Lecture> sessions1 = new ArrayList<>();
 
     public Lecture addLecture() {
@@ -54,10 +56,9 @@ public class Major {
         return lecture;
     }
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "major")
-    @JsonIgnoreProperties({"major"})
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "major" , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Professor> sessions2 = new ArrayList<>();
-
     public Professor addProfessor() {
         Professor professor = Professor.builder()
                 .major(this)
@@ -67,8 +68,8 @@ public class Major {
         return professor;
     }
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "major")
-    @JsonIgnoreProperties({"major"})
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "major", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<User> sessions3 = new ArrayList<>();
 
     public User addUser() {
