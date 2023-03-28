@@ -1,11 +1,15 @@
 package com.spring.api.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -38,5 +42,19 @@ public class Professor {
         major = professorEditor.getMajor();
     }
 
+
+    // 분반 > 교수 다대일
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lecture")
+    @JsonIgnoreProperties({"lecture"})
+    private List<LectureClass> lectureClassSessions = new ArrayList<>();
+
+    public LectureClass addLectureClass() {
+        LectureClass lectureClass = LectureClass.builder()
+                .professor(this)
+                .build();
+        lectureClassSessions.add(lectureClass);
+
+        return lectureClass;
+    }
 
 }

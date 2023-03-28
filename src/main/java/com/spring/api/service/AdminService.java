@@ -73,6 +73,7 @@ public class AdminService {
                 .adminId(admin.getAdminId())
                 .build();
     }
+
     // 교직원 정보 조회 리스트
     public List<AdminResponse> getList(AdminSearch adminSearch) {
         return adminRepository.getList(adminSearch).stream()
