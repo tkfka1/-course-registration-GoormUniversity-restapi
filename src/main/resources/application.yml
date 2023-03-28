@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    include: aws
+  jpa:
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+  data:
+    web:
+      pageable:
+        max-page-size: 2000
+        default-page-size: 20
+        one-indexed-parameters: true
+
+admin:
+  jwt-key: "rDAmA9Sgk+Q1XwuJbG7E6xFFUhQpdi+al5iyPnRTK/Q="
+user:
+  jwt-key: "rFDmA9Sgk+Q1XwuJbG7E6xFFUhQpdi+al5iyPnRTK/Q="
