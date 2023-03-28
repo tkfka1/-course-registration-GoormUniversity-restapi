@@ -21,6 +21,13 @@ public class LectureClass {
     private Long classMin;
     @Column(name = "lecture_class_max")
     private Long classMax;
+    @Column(name = "lecture_class_period")
+    private Long period;
+    @Column(name = "lecture_class_week")
+    private Long week;
+    @Column(name = "lecture_class_explanation")
+    private String explanation;
+
 
     // 분반 > 강의 다대일
     @ManyToOne(fetch = FetchType.EAGER)
@@ -31,10 +38,13 @@ public class LectureClass {
 
 
     @Builder
-    public LectureClass(Long id, Long classMin, Long classMax, Lecture lecture, Professor professor) {
+    public LectureClass(Long id, Long classMin, Long classMax, Long period, Long week, String explanation, Lecture lecture, Professor professor) {
         this.id = id;
         this.classMin = classMin;
         this.classMax = classMax;
+        this.period = period;
+        this.week = week;
+        this.explanation = explanation;
         this.lecture = lecture;
         this.professor = professor;
     }
@@ -43,15 +53,23 @@ public class LectureClass {
         return LectureClassEditor.builder()
                 .classMin(classMin)
                 .classMax(classMax)
+                .period(period)
+                .week(week)
+                .explanation(explanation)
                 .lecture(lecture)
                 .professor(professor);
+
     }
 
     public void edit(LectureClassEditor lectureClassEditor) {
         this.classMin = lectureClassEditor.getClassMin();
         this.classMax = lectureClassEditor.getClassMax();
+        this.period = lectureClassEditor.getPeriod();
+        this.week = lectureClassEditor.getWeek();
+        this.explanation = lectureClassEditor.getExplanation();
         this.lecture = lectureClassEditor.getLecture();
         this.professor = lectureClassEditor.getProfessor();
+
     }
 
 }
