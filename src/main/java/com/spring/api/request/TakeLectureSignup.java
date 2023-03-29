@@ -11,6 +11,7 @@ public class TakeLectureSignup {
 
     private LectureClass lectureClass;
     private User user;
+    private Long credit;
 
 }
 

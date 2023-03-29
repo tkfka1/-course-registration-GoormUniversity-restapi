@@ -17,6 +17,7 @@ public class LectureClassResponse {
     private final Long id;
     private final Long classMax;
     private final Long classMin;
+    private final Long classPeople;
     private final Lecture lecture;
     private final Professor professor;
     private final String explanation;
@@ -28,6 +29,7 @@ public class LectureClassResponse {
         this.id = lectureClass.getId();
         this.classMax = lectureClass.getClassMax();
         this.classMin = lectureClass.getClassMin();
+        this.classPeople = lectureClass.getClassPeople();
         this.lecture = lectureClass.getLecture();
         this.professor = lectureClass.getProfessor();
         this.explanation = lectureClass.getExplanation();
@@ -37,10 +39,11 @@ public class LectureClassResponse {
     }
 
     @Builder
-    public LectureClassResponse(Long id, Long classMax, Long classMin, Lecture lecture, Professor professor, String explanation, Long period, Long week) {
+    public LectureClassResponse(Long id, Long classMax, Long classMin, Long classPeople, Lecture lecture, Professor professor, String explanation, Long period, Long week) {
         this.id = id;
         this.classMax = classMax;
         this.classMin = classMin;
+        this.classPeople = classPeople;
         this.lecture = lecture;
         this.professor = professor;
         this.explanation = explanation;

@@ -11,6 +11,7 @@ import lombok.Data;
 public class LectureClassSignup {
     private Long classMin;
     private Long classMax;
+    private Long classPeople;
     private Lecture lecture;
     private Professor professor;
     private Long period;

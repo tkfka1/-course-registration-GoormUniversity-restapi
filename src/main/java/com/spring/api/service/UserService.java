@@ -72,6 +72,7 @@ public class UserService {
                 .email(user.getEmail())
                 .name(user.getName())
                 .credit(user.getCredit())
+                .haveCredit(user.getHaveCredit())
                 .major(user.getMajor())
                 .build();
     }
@@ -99,6 +100,7 @@ public class UserService {
                 .studentId(userEdit.getStudentId())
                 .password(encryptedPassword)
                 .credit(userEdit.getCredit())
+                .haveCredit(userEdit.getHaveCredit())
                 .major(userEdit.getMajor())
                 .email(userEdit.getEmail())
                 .build();
@@ -118,6 +120,7 @@ public class UserService {
                 .name(userEdit.getName())
                 .studentId(userEdit.getStudentId())
                 .credit(userEdit.getCredit())
+                .haveCredit(userEdit.getHaveCredit())
                 .major(userEdit.getMajor())
                 .email(userEdit.getEmail())
                 .build();

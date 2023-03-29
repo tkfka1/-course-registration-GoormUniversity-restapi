@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,29 +22,39 @@ public class TakeLecture {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "take_lecture_id")
     private Long id;
-    @JsonBackReference
+    @JsonBackReference(value = "lectureClass-takeLecture")
     @ManyToOne(fetch = FetchType.EAGER)
     private LectureClass lectureClass;
-    @JsonBackReference
+    @JsonBackReference(value = "user-takeLecture")
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
+    @Column(name = "take_credit")
+    private Long credit;
+
+    @Column(name = "take_date")
+    private LocalDateTime takeDate;
+
 
     @Builder
-    public TakeLecture(LectureClass lectureClass, User user) {
+    public TakeLecture(LectureClass lectureClass, User user , Long credit) {
         this.lectureClass = lectureClass;
         this.user = user;
+        this.takeDate = LocalDateTime.now();
+        this.credit = credit;
     }
 
     public TakeLectureEditor.TakeLectureEditorBuilder toEditor() {
         return TakeLectureEditor.builder()
                 .lectureClass(lectureClass)
-                .user(user);
+                .user(user)
+                .credit(credit);
     }
 
     public void edit(TakeLectureEditor TakelectureEditor) {
         lectureClass = TakelectureEditor.getLectureClass();
         user = TakelectureEditor.getUser();
+        credit = TakelectureEditor.getCredit();
 
     }
 

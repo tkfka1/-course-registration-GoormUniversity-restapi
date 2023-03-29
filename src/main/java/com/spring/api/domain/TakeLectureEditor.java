@@ -7,10 +7,12 @@ import lombok.Getter;
 public class TakeLectureEditor {
     private final LectureClass lectureClass;
     private final User user;
+    private final Long credit;
 
     @Builder
-    public TakeLectureEditor(LectureClass lectureClass, User user) {
+    public TakeLectureEditor(LectureClass lectureClass, User user , Long credit) {
         this.lectureClass = lectureClass;
         this.user = user;
+        this.credit = credit;
     }
 }

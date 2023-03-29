@@ -19,10 +19,14 @@ public class TakeLectureEdit {
     private User user;
     @NotNull(message = "강의분반을 입력해주세요.")
     private LectureClass lectureClass;
+    @NotNull(message = "강의분반을 입력해주세요.")
+    private Long credit;
+
     @Builder
-    public TakeLectureEdit(User user, LectureClass lectureClass) {
+    public TakeLectureEdit(User user, LectureClass lectureClass, Long credit) {
         this.user = user;
         this.lectureClass = lectureClass;
+        this.credit = credit;
     }
 
 }

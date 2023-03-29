@@ -24,16 +24,19 @@ public class UserEdit {
     private String email;
     @NotNull(message = "수강학점을 입력해주세요.")
     private Long credit;
+    @NotNull(message = "현재학점을 입력해주세요.")
+    private Long haveCredit;
     @NotNull(message = "전공을 입력해주세요.")
     private Major major;
 
     @Builder
-    public UserEdit(String studentId, String name, String password, String email, Long credit, Major major) {
+    public UserEdit(String studentId, String name, String password, String email, Long credit, Long haveCredit , Major major) {
         this.studentId = studentId;
         this.name = name;
         this.password = password;
         this.email = email;
         this.credit = credit;
+        this.haveCredit = haveCredit;
         this.major = major;
     }
 

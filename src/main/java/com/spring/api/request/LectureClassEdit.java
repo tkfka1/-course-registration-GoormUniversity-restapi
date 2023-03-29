@@ -21,6 +21,8 @@ public class LectureClassEdit {
     private Long classMin;
     @NotNull(message = "최대인원수를 입력해주세요.")
     private Long classMax;
+    @NotNull(message = "현재인원수를 입력해주세요.")
+    private Long classPeople;
     @NotBlank(message = "설명을 입력해주세요.")
     private String explanation;
     @NotNull(message = "교시를 입력해주세요.")
@@ -33,9 +35,10 @@ public class LectureClassEdit {
     private Lecture lecture;
 
     @Builder
-    public LectureClassEdit(Long classMin, Long classMax, String explanation, Long period, Long week, Professor professor, Lecture lecture) {
+    public LectureClassEdit(Long classMin, Long classMax, Long classPeople, String explanation, Long period, Long week, Professor professor, Lecture lecture) {
         this.classMin = classMin;
         this.classMax = classMax;
+        this.classPeople = classPeople;
         this.explanation = explanation;
         this.period = period;
         this.week = week;

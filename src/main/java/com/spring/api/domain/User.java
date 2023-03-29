@@ -8,6 +8,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -33,24 +34,27 @@ public class User {
     private String password;
     @Column(name = "user_credit")
     private Long credit;
+    @Column(name = "user_have_credit")
+    @ColumnDefault("0")
+    private Long haveCredit;
     @Column(name = "user_created_date")
     private LocalDateTime createdDate;
     @ManyToOne(fetch = FetchType.EAGER)
     private Major major;
 
     @Builder
-    public User(String studentId, String name, String email, String password, Long credit, Major major) {
+    public User(String studentId, String name, String email, String password, Long credit, Long haveCredit , Major major) {
         this.studentId = studentId;
         this.name = name;
         this.email = email;
         this.password = password;
         this.credit = credit;
+        this.haveCredit = haveCredit;
         this.major = major;
         this.createdDate = LocalDateTime.now();
     }
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user" , fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<SessionUser> sessions = new ArrayList<>();
 
     public SessionUser addSession() {
@@ -62,9 +66,8 @@ public class User {
         return session;
     }
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-takeLecture")
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user" , fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<TakeLecture> TakeLectures  = new ArrayList<>();
 
     public UserEditor.UserEditorBuilder toEditor() {
@@ -74,7 +77,8 @@ public class User {
                 .email(email)
                 .password(password)
                 .major(major)
-                .credit(credit);
+                .credit(credit)
+                .haveCredit(haveCredit);
     }
 
     public void edit(UserEditor userEditor) {
@@ -84,7 +88,7 @@ public class User {
         password = userEditor.getPassword();
         major = userEditor.getMajor();
         credit = userEditor.getCredit();
-
+        haveCredit = userEditor.getHaveCredit();
 
     }
 }

@@ -52,6 +52,7 @@ public class LectureClassService {
                 .explanation(lectureClass.getExplanation())
                 .classMin(lectureClass.getClassMin())
                 .classMax(lectureClass.getClassMax())
+                .classPeople(lectureClass.getClassPeople())
                 .build();
 
     }
@@ -79,6 +80,7 @@ public class LectureClassService {
                 .explanation(lectureClassEdit.getExplanation())
                 .classMin(lectureClassEdit.getClassMin())
                 .classMax(lectureClassEdit.getClassMax())
+                .classPeople(lectureClassEdit.getClassPeople())
                 .build();
 
         lectureClass.edit(lectureClassEditor);
@@ -100,6 +102,7 @@ public class LectureClassService {
                 .explanation(lectureClassEdit.getExplanation())
                 .classMin(lectureClassEdit.getClassMin())
                 .classMax(lectureClassEdit.getClassMax())
+                .classPeople(lectureClassEdit.getClassPeople())
                 .build();
 
         lectureClass.edit(lectureClassEditor);
