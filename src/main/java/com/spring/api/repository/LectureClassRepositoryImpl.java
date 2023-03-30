@@ -20,7 +20,7 @@ public class LectureClassRepositoryImpl implements LectureClassRepositoryCustom 
         return jpaQueryFactory.selectFrom(lectureClass)
 //                .limit(userSearch.getSize())
 //                .offset(userSearch.getOffset())
-                .orderBy(lectureClass.id.desc())
+                .orderBy(lectureClass.lecture.id.desc())
                 .fetch();
     }
 }

@@ -70,6 +70,11 @@ public class User {
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user" , fetch = FetchType.LAZY)
     private List<TakeLecture> TakeLectures  = new ArrayList<>();
 
+
+    @JsonManagedReference(value = "user-cartLecture")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user" , fetch = FetchType.LAZY)
+    private List<CartLecture> CartLectures  = new ArrayList<>();
+
     public UserEditor.UserEditorBuilder toEditor() {
         return UserEditor.builder()
                 .studentId(studentId)

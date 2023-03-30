@@ -90,5 +90,10 @@ public class LectureClass {
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lectureClass" , fetch = FetchType.LAZY)
     private List<TakeLecture> takeLectures  = new ArrayList<>();
 
+    // 장바구니 > 분반강의 다대일
+    @JsonManagedReference(value = "lectureClass-cartLecture")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lectureClass" , fetch = FetchType.LAZY)
+    private List<CartLecture> cartLectures  = new ArrayList<>();
+
 
 }
