@@ -14,4 +14,5 @@ public class UserSignup {
     private String email;
     private Long credit;
     private Major major;
+    private Long haveCredit;
 }

@@ -57,6 +57,7 @@ public class UserService {
                 .name(userSignup.getName())
                 .credit(userSignup.getCredit())
                 .major(userSignup.getMajor())
+                .haveCredit(userSignup.getHaveCredit())
                 .build();
         userRepository.save(user);
     }
