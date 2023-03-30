@@ -34,6 +34,7 @@ public class LectureClassService {
                 .explanation(lectureClassSignup.getExplanation())
                 .classMin(lectureClassSignup.getClassMin())
                 .classMax(lectureClassSignup.getClassMax())
+                .classPeople(lectureClassSignup.getClassPeople())
                 .build();
         lectureClassRepository.save(lectureClass);
     }
