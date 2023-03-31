@@ -15,4 +15,5 @@ public class UserSignup {
     private Long credit;
     private Major major;
     private Long haveCredit;
+    private Long grade;
 }

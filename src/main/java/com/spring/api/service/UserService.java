@@ -58,6 +58,7 @@ public class UserService {
                 .credit(userSignup.getCredit())
                 .major(userSignup.getMajor())
                 .haveCredit(userSignup.getHaveCredit())
+                .grade(userSignup.getGrade())
                 .build();
         userRepository.save(user);
     }
@@ -75,6 +76,7 @@ public class UserService {
                 .credit(user.getCredit())
                 .haveCredit(user.getHaveCredit())
                 .major(user.getMajor())
+                .grade(user.getGrade())
                 .build();
     }
     // 학생 정보 조회 리스트
@@ -104,6 +106,7 @@ public class UserService {
                 .haveCredit(userEdit.getHaveCredit())
                 .major(userEdit.getMajor())
                 .email(userEdit.getEmail())
+                .grade(userEdit.getGrade())
                 .build();
 
         user.edit(userEditor);
@@ -124,6 +127,7 @@ public class UserService {
                 .haveCredit(userEdit.getHaveCredit())
                 .major(userEdit.getMajor())
                 .email(userEdit.getEmail())
+                .grade(userEdit.getGrade())
                 .build();
 
         user.edit(userEditor);

@@ -18,6 +18,7 @@ public class UserResponse {
     private final Major major;
     private final Long credit;
     private final Long haveCredit;
+    private final Long grade;
 
     // 생성자 오버로딩
     public UserResponse(User user) {
@@ -28,12 +29,13 @@ public class UserResponse {
         this.major = user.getMajor();
         this.credit = user.getCredit();
         this.haveCredit = user.getHaveCredit();
+        this.grade = user.getGrade();
 
     }
 
 
     @Builder
-    public UserResponse(Long id, String name, String studentId, String email, Major major, Long credit , Long haveCredit) {
+    public UserResponse(Long id, String name, String studentId, String email, Major major, Long credit , Long haveCredit , Long grade) {
         this.id = id;
         this.name = name;
         this.studentId = studentId;
@@ -41,5 +43,6 @@ public class UserResponse {
         this.major = major;
         this.credit = credit;
         this.haveCredit = haveCredit;
+        this.grade = grade;
     }
 }
