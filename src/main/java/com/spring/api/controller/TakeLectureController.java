@@ -21,38 +21,38 @@ public class TakeLectureController {
     private final TakeLectureService takeLectureService;
 
     // 수강 등록  "/take/auth/signup" post
-    @PostMapping("/take/auth/signup")
+    @PostMapping("/api/take/auth/signup")
     public void signup(@RequestBody TakeLectureSignup takeLectureSignup) {
         takeLectureService.signup(takeLectureSignup);
     }
 
 
     // 단일 수강 조회 "/take/auth/{id}" get
-    @GetMapping("/take/auth/{id}")
+    @GetMapping("/api/take/auth/{id}")
     public TakeLectureResponse get(@PathVariable Long id) {
         return takeLectureService.get(id);
     }
 
     // 전체 수강 조회 "/take/auth/{id}" get
-    @GetMapping("/take/auth")
+    @GetMapping("/api/take/auth")
     public List<TakeLectureResponse> getList(@ModelAttribute TakeLectureSearch takeLectureSearch) {
         return takeLectureService.getList(takeLectureSearch);
     }
 
     // 단일 수강 삭제 "/take/auth/{id}" get
-    @DeleteMapping("/take/auth/{id}")
+    @DeleteMapping("/api/take/auth/{id}")
     public void delete(@PathVariable Long id) {
         takeLectureService.delete(id);
     }
 
     // 비밀번호 입력 있을 시
-    @PutMapping("/take/auth/{id}")
+    @PutMapping("/api/take/auth/{id}")
     public void edit(@PathVariable Long id, @RequestBody @Valid TakeLectureEdit request) {
         takeLectureService.edit(id, request);
     }
 
     // 비밀번호 입력 없을 때
-    @PatchMapping("/take/auth/{id}")
+    @PatchMapping("/api/take/auth/{id}")
     public void edit2(@PathVariable Long id, @RequestBody @Valid TakeLectureEdit request) {
         takeLectureService.edit2(id, request);
     }

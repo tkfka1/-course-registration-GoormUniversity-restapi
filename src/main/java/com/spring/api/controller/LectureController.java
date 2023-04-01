@@ -23,38 +23,38 @@ public class LectureController {
     private final LectureService lectureService;
 
     // 강의 회원가입  "/lecture/auth/signup" post
-    @PostMapping("/lecture/auth/signup")
+    @PostMapping("/api/lecture/auth/signup")
     public void signup(@RequestBody LectureSignup lectureSignup) {
         lectureService.signup(lectureSignup);
     }
 
 
     // 단일 정보 조회 "/lecture/auth/{id}" get
-    @GetMapping("/lecture/auth/{id}")
+    @GetMapping("/api/lecture/auth/{id}")
     public LectureResponse get(@PathVariable Long id) {
         return lectureService.get(id);
     }
 
     // 전체 정보 조회 "/lecture/auth/{id}" get
-    @GetMapping("/lecture/auth")
+    @GetMapping("/api/lecture/auth")
     public List<LectureResponse> getList(@ModelAttribute LectureSearch lectureSearch) {
         return lectureService.getList(lectureSearch);
     }
 
     // 단일 정보 삭제 "/lecture/auth/{id}" get
-    @DeleteMapping("/lecture/auth/{id}")
+    @DeleteMapping("/api/lecture/auth/{id}")
     public void delete(@PathVariable Long id) {
         lectureService.delete(id);
     }
 
     // 비밀번호 입력 있을 시
-    @PutMapping("/lecture/auth/{id}")
+    @PutMapping("/api/lecture/auth/{id}")
     public void edit(@PathVariable Long id, @RequestBody @Valid LectureEdit request) {
         lectureService.edit(id, request);
     }
 
     // 비밀번호 입력 없을 때
-    @PatchMapping("/lecture/auth/{id}")
+    @PatchMapping("/api/lecture/auth/{id}")
     public void edit2(@PathVariable Long id, @RequestBody @Valid LectureEdit request) {
         lectureService.edit2(id, request);
     }

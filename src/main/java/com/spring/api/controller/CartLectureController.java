@@ -23,38 +23,38 @@ public class CartLectureController {
     private final CartLectureService cartLectureService;
 
     // 수강 장바구니 등록  "/cart/auth/signup" post
-    @PostMapping("/cart/auth/signup")
+    @PostMapping("/api/cart/auth/signup")
     public void signup(@RequestBody CartLectureSignup cartLectureSignup) {
         cartLectureService.signup(cartLectureSignup);
     }
 
 
     // 단일 장바구니 조회 "/cart/auth/{id}" get
-    @GetMapping("/cart/auth/{id}")
+    @GetMapping("/api/cart/auth/{id}")
     public CartLectureResponse get(@PathVariable Long id) {
         return cartLectureService.get(id);
     }
 
     // 전체 장바구니 조회 "/cart/auth/{id}" get
-    @GetMapping("/cart/auth")
+    @GetMapping("/api/cart/auth")
     public List<CartLectureResponse> getList(@ModelAttribute CartLectureSearch cartLectureSearch) {
         return cartLectureService.getList(cartLectureSearch);
     }
 
     // 단일 장바구니 삭제 "/cart/auth/{id}" get
-    @DeleteMapping("/cart/auth/{id}")
+    @DeleteMapping("/api/cart/auth/{id}")
     public void delete(@PathVariable Long id) {
         cartLectureService.delete(id);
     }
 
     // 비밀번호 입력 있을 시
-    @PutMapping("/cart/auth/{id}")
+    @PutMapping("/api/cart/auth/{id}")
     public void edit(@PathVariable Long id, @RequestBody @Valid CartLectureEdit request) {
         cartLectureService.edit(id, request);
     }
 
     // 비밀번호 입력 없을 때
-    @PatchMapping("/cart/auth/{id}")
+    @PatchMapping("/api/cart/auth/{id}")
     public void edit2(@PathVariable Long id, @RequestBody @Valid CartLectureEdit request) {
         cartLectureService.edit2(id, request);
     }

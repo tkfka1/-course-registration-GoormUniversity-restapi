@@ -32,7 +32,7 @@ public class AdminController {
 
 
     // admin 로그인  "/admin/auth/login" post
-    @PostMapping("/admin/auth/login")
+    @PostMapping("/api/admin/auth/login")
     public SessionResponse login(@RequestBody AdminLogin adminLogin) {
         Long userId = adminService.signin(adminLogin);
 
@@ -48,37 +48,37 @@ public class AdminController {
     }
 
     // admin 회원가입  "/admin/auth/signup" post
-    @PostMapping("/admin/auth/signup")
+    @PostMapping("/api/admin/auth/signup")
     public void signup(@RequestBody AdminSignup adminSignup) {
         adminService.signup(adminSignup);
     }
 
 
     // 단일 정보 조회 "/admin/auth/{id}" get
-    @GetMapping("/admin/auth/{id}")
+    @GetMapping("/api/admin/auth/{id}")
     public AdminResponse get(@PathVariable Long id) {
         return adminService.get(id);
     }
 
-    @GetMapping("/admin/auth")
+    @GetMapping("/api/admin/auth")
     public List<AdminResponse> getList(@ModelAttribute AdminSearch adminSearch) {
         return adminService.getList(adminSearch);
     }
 
 
-    @DeleteMapping("/admin/auth/{id}")
+    @DeleteMapping("/api/admin/auth/{id}")
     public void delete(@PathVariable Long id) {
         adminService.delete(id);
     }
 
     // 비밀번호 입력 있을 시
-    @PutMapping("/admin/auth/{id}")
+    @PutMapping("/api/admin/auth/{id}")
     public void edit(@PathVariable Long id, @RequestBody @Valid AdminEdit request) {
         adminService.edit(id, request);
     }
 
     // 비밀번호 입력 없을 때
-    @PatchMapping("/admin/auth/{id}")
+    @PatchMapping("/api/admin/auth/{id}")
     public void edit2(@PathVariable Long id, @RequestBody @Valid AdminEdit request) {
         adminService.edit2(id, request);
     }

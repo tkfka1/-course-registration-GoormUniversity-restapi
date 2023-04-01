@@ -29,7 +29,7 @@ public class UserController {
 
 
     // 학생 로그인  "/admin/auth/login" post
-    @PostMapping("/user/auth/login")
+    @PostMapping("/api/user/auth/login")
     public SessionResponse login(@RequestBody UserLogin userLogin) {
         Long userId = userService.signin(userLogin);
 
@@ -45,38 +45,38 @@ public class UserController {
     }
 
     // 학생 회원가입  "/admin/auth/signup" post
-    @PostMapping("/user/auth/signup")
+    @PostMapping("/api/user/auth/signup")
     public void signup(@RequestBody UserSignup userSignup) {
         userService.signup(userSignup);
     }
 
 
     // 단일 정보 조회 "/admin/auth/{id}" get
-    @GetMapping("/user/auth/{id}")
+    @GetMapping("/api/user/auth/{id}")
     public UserResponse get(@PathVariable Long id) {
         return userService.get(id);
     }
 
     // 전체 정보 조회 "/admin/auth/{id}" get
-    @GetMapping("/user/auth")
+    @GetMapping("/api/user/auth")
     public List<UserResponse> getList(@ModelAttribute UserSearch userSearch) {
         return userService.getList(userSearch);
     }
 
     // 단일 정보 삭제 "/admin/auth/{id}" get
-    @DeleteMapping("/user/auth/{id}")
+    @DeleteMapping("/api/user/auth/{id}")
     public void delete(@PathVariable Long id) {
         userService.delete(id);
     }
 
     // 비밀번호 입력 있을 시
-    @PutMapping("/user/auth/{id}")
+    @PutMapping("/api/user/auth/{id}")
     public void edit(@PathVariable Long id, @RequestBody @Valid UserEdit request) {
         userService.edit(id, request);
     }
 
     // 비밀번호 입력 없을 때
-    @PatchMapping("/user/auth/{id}")
+    @PatchMapping("/api/user/auth/{id}")
     public void edit2(@PathVariable Long id, @RequestBody @Valid UserEdit request) {
         userService.edit2(id, request);
     }

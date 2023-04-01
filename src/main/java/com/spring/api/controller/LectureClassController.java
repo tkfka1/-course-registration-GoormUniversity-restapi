@@ -20,37 +20,37 @@ public class LectureClassController {
     private final LectureClassService lectureClassService;
 
     // 강의 회원가입  "/lecture/auth/signup" post
-    @PostMapping("/lectureClass/auth/signup")
+    @PostMapping("/api/lectureClass/auth/signup")
     public void signup(@RequestBody LectureClassSignup lectureClassSignup) {
         lectureClassService.signup(lectureClassSignup);
     }
 
     // 단일 정보 조회 "/lectureClass/auth/{id}" get
-    @GetMapping("/lectureClass/auth/{id}")
+    @GetMapping("/api/lectureClass/auth/{id}")
     public LectureClassResponse get(@PathVariable Long id) {
         return lectureClassService.get(id);
     }
 
     // 전체 정보 조회 "/lectureClass/auth/{id}" get
-    @GetMapping("/lectureClass/auth")
+    @GetMapping("/api/lectureClass/auth")
     public List<LectureClassResponse> getList(@ModelAttribute LectureClassSearch lectureClassSearch) {
         return lectureClassService.getList(lectureClassSearch);
     }
 
     // 단일 정보 삭제 "/lectureClass/auth/{id}" get
-    @DeleteMapping("/lectureClass/auth/{id}")
+    @DeleteMapping("/api/lectureClass/auth/{id}")
     public void delete(@PathVariable Long id) {
         lectureClassService.delete(id);
     }
 
     // 비밀번호 입력 있을 시
-    @PutMapping("/lectureClass/auth/{id}")
+    @PutMapping("/api/lectureClass/auth/{id}")
     public void edit(@PathVariable Long id, @RequestBody @Valid LectureClassEdit request) {
         lectureClassService.edit(id, request);
     }
 
     // 비밀번호 입력 없을 때
-    @PatchMapping("/lectureClass/auth/{id}")
+    @PatchMapping("/api/lectureClass/auth/{id}")
     public void edit2(@PathVariable Long id, @RequestBody @Valid LectureClassEdit request) {
         lectureClassService.edit2(id, request);
     }
