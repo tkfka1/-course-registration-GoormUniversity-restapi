@@ -23,10 +23,8 @@ public class UserController {
 
     // 학생 로그인, 회원가입, 하는 컨트롤러
 
-
     private final UserService userService;
     private final AppConfigUser appConfigUser;
-
 
     // 학생 로그인  "/admin/auth/login" post
     @PostMapping("/api/user/auth/login")
@@ -80,7 +78,5 @@ public class UserController {
     public void edit2(@PathVariable Long id, @RequestBody @Valid UserEdit request) {
         userService.edit2(id, request);
     }
-
-
 
 }
