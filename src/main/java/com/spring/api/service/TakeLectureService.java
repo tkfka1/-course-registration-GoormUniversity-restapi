@@ -56,6 +56,7 @@ public class TakeLectureService {
 
         // 검증 시간 중복
 
+
         // user에 학점 추가
         UserEditor.UserEditorBuilder editorBuilder = user.toEditor();
         UserEditor userEditor = editorBuilder
