@@ -26,7 +26,6 @@ public class AdminController {
 
     // admin 로그인, 회원가입, 하는 컨트롤러
 
-
     private final AdminService adminService;
     private final AppConfigAdmin appConfigAdmin;
 
@@ -35,9 +34,7 @@ public class AdminController {
     @PostMapping("/api/admin/auth/login")
     public SessionResponse login(@RequestBody AdminLogin adminLogin) {
         Long userId = adminService.signin(adminLogin);
-
         SecretKey key = Keys.hmacShaKeyFor(appConfigAdmin.getJwtKey());
-
         String jws = Jwts.builder()
                 .setSubject(String.valueOf(userId))
                 .signWith(key)
@@ -64,7 +61,6 @@ public class AdminController {
     public List<AdminResponse> getList(@ModelAttribute AdminSearch adminSearch) {
         return adminService.getList(adminSearch);
     }
-
 
     @DeleteMapping("/api/admin/auth/{id}")
     public void delete(@PathVariable Long id) {
